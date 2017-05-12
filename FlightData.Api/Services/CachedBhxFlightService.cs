@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using FlightData.Api.Models;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace FlightData.Api.Controllers
+namespace FlightData.Api.Services
 {
     public class CachedBhxFlightService : IFlightService
     {
