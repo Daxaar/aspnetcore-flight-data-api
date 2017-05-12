@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using FlightData.Api.Controllers;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,8 @@ namespace FlightData.Api
         {
             // Add framework services.
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddScoped<IFlightService, CachedBhxFlightService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
