@@ -5,7 +5,8 @@ namespace FlightData.Api.Models
 {
     public class Flights
     {
-        public bool Succcess { get; set; }
+        public string Source { get; set; }
+        public bool Success { get; set; }
 
         [JsonIgnore] public List<Flight> Arrivals => Data.Arrivals;
         [JsonIgnore] public List<Flight> Departures => Data.Departures;

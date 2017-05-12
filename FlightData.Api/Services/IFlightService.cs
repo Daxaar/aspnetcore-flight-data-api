@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using FlightData.Api.Models;
 
-namespace FlightData.Api.Controllers
+namespace FlightData.Api.Services
 {
     public interface IFlightService
     {

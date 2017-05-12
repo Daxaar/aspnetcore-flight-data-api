@@ -2,7 +2,7 @@
 using FlightData.Api.Models;
 using Flurl.Http;
 
-namespace FlightData.Api.Controllers
+namespace FlightData.Api.Services
 {
     public class BhxFlightService : IFlightService
     {
