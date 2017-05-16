@@ -9,6 +9,36 @@ namespace FlightData.Api.Tests
     public class FlightDataParserTests
     {
         [Fact]
+        public void RemovesStyleAttributes()
+        {
+            
+        }
+
+        [Fact]
+        public void ConvertsDotNetDateFormatToEpoch()
+        {
+            
+        }
+
+        [Fact]
+        public void ChangesNameOfAerLingusToComedyName()
+        {
+            
+        }
+
+        [Fact]
+        public void WritesMergedCountWhenFightsAreGrouped()
+        {
+            
+        }
+
+        [Fact]
+        public void WritesSourcePropertyAsDiskWhenServedFromCache()
+        {
+            
+        }
+
+        [Fact]
         public void GroupsFlightsWithTheSameFlightNumberAndAirline()
         {
             Flights flights = new Flights();
