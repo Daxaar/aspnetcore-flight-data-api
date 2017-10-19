@@ -30,5 +30,11 @@ namespace FlightData.Api.Controllers
             var result = await _flightService.Load();
             return new JsonResult(result.Departures);
         }
+        [HttpGet]
+        [Route("version")]
+        public string Version()
+        {
+            return "1.0";
+        }
     }
 }
