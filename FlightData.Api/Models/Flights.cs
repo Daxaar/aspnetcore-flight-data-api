@@ -25,11 +25,24 @@ namespace FlightData.Api.Models
     {
         public string FlightNumber { get; set; }
         public string Airline { get; set; }
-        public string EstimatedTime { get; set; }
-        public string ScheduledTime { get; set; }
-        public string RunwayTime { get; set; }
+        private string _estimatedTime = "";
+        public string EstimatedTime { get => _estimatedTime;set => _estimatedTime = FormatDate(value);}
+        
+        private string _scheduledTime = "";
+        public string ScheduledTime { get => _scheduledTime;set => _scheduledTime = FormatDate(value);}
+        
+        private string _runwayTime = "";
+        public string RunwayTime { get => _runwayTime;set => _runwayTime = FormatDate(value);}
+
         public IEnumerable<string> FlightNumbers { get; set; }
         public string Airport { get; set; }
         public IEnumerable<string> Airlines { get; set; }
+        public string StatusTimeText { get; set; }
+        public string Status { get; set; }
+
+        private static string FormatDate(string date)
+        {
+            return date.Replace("/Date(", "").Replace(")/","");
+        }
     }
 }
