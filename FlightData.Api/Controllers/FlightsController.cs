@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using FlightData.Api.Models;
 using FlightData.Api.Services;
@@ -17,11 +18,18 @@ namespace FlightData.Api.Controllers
         }
         
         [HttpGet]
+        [ResponseCache(Duration = 10)]
         [Route("arrivals")]
         public async Task<IActionResult> Arrivals()
         {
             var result = await _flightService.Load();
-            return new JsonResult(FlightParser.Parse( result.Arrivals ));
+           
+            return new JsonResult(new
+            {
+                total = result.Arrivals.Count,
+                date = DateTime.Now,
+                arrivals = FlightParser.Parse( result.Arrivals ),
+            });
         }
 
         [HttpGet]

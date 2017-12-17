@@ -19,7 +19,7 @@ namespace FlightData.Api.Services
             var bhx = new BhxFlightService();
             return await _cache.GetOrCreateAsync("bhx", entry =>
             {
-                entry.SlidingExpiration = TimeSpan.FromSeconds(30);
+                entry.SlidingExpiration = TimeSpan.FromSeconds(10);
                 return bhx.Load();
             });
         }
