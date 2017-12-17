@@ -67,34 +67,12 @@ namespace FlightData.Api.Tests
             });
 
             FlightParser sut = new FlightParser();
-            var result = sut.Parse(flights.Arrivals);
+            var result = FlightParser.Parse(flights.Arrivals);
             Assert.Equal(2, result.Count());
             Assert.Contains("F111", result.First().FlightNumbers);
             Assert.Contains("F222", result.First().FlightNumbers);
             Assert.Contains("Emirates",result.First().Airlines);
             Assert.Contains("FlyBe",result.First().Airlines);
-        }
-    }
-
-    public class FlightParser
-    {
-        public IEnumerable<Flight> Parse(IEnumerable<Flight> flights)
-        {
-            return ConsolidateFlights(flights);
-        }
-
-        private IEnumerable<Flight> ConsolidateFlights(IEnumerable<Flight> flights)
-        {
-            return flights.GroupBy(
-                x => x.Airport + x.ScheduledTime,
-                x => x, (key, g) => new Flight
-                {
-                    Airlines = g.Select(x => x.Airline),
-                    EstimatedTime = g.First().EstimatedTime,
-                    FlightNumbers = g.Select(x => x.FlightNumber),
-                    RunwayTime = g.First().RunwayTime,
-                    ScheduledTime = g.First().ScheduledTime
-                });
         }
     }
 }

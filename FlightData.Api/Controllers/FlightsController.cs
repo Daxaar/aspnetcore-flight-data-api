@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using FlightData.Api.Models;
 using FlightData.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -20,7 +21,7 @@ namespace FlightData.Api.Controllers
         public async Task<IActionResult> Arrivals()
         {
             var result = await _flightService.Load();
-            return new JsonResult(result.Arrivals);
+            return new JsonResult(FlightParser.Parse( result.Arrivals ));
         }
 
         [HttpGet]
