@@ -16,9 +16,11 @@ namespace FlightData.Api.Models
                 x => x.Airport + x.ScheduledTime,
                 x => x, (key, g) => new Flight
                 {
-                    Airport = g.First().Airport,
+                    Airline = string.Join(",",g.Select(x => x.Airline)),
                     Airlines = g.Select(x => x.Airline),
+                    Airport = g.First().Airport,
                     EstimatedTime = g.First().EstimatedTime,
+                    FlightNumber = string.Join(",", g.Select(x => x.FlightNumber)),
                     FlightNumbers = g.Select(x => x.FlightNumber),
                     RunwayTime = g.First().RunwayTime,
                     ScheduledTime = g.First().ScheduledTime,
